@@ -89,7 +89,13 @@ class DependenciesCollector {
         return when (containingDeclaration) {
             is PackageFragmentDescriptor -> descriptor
             is ClassDescriptor -> getTopLevelDeclaration(containingDeclaration)
-            else -> throw AssertionError("Package or class expected: $containingDeclaration; for $descriptor")
+            else ->
+                if (descriptor is PropertyAccessorDescriptor && descriptor.kind == CallableMemberDescriptor.Kind.SYNTHESIZED && containingDeclaration is ModuleDescriptor) {
+                    //property accessors syntax for java getter/setters generate syntetic accessor in Module
+                    containingDeclaration
+                } else {
+                    throw AssertionError("Package or class expected: $containingDeclaration; for $descriptor")
+                }
         }
     }
 
