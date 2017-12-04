@@ -44,6 +44,7 @@ import org.jetbrains.kotlin.types.upperIfFlexible
 import org.jetbrains.kotlin.utils.addToStdlib.firstIsInstanceOrNull
 import org.jetbrains.kotlin.utils.keysToMap
 import org.jetbrains.org.objectweb.asm.Label
+import org.jetbrains.org.objectweb.asm.Opcodes
 import org.jetbrains.org.objectweb.asm.Type
 import org.jetbrains.org.objectweb.asm.commons.InstructionAdapter
 import java.util.*
@@ -379,7 +380,12 @@ class ExpressionCodegen(
     override fun <T> visitConst(expression: IrConst<T>, data: BlockInfo): StackValue {
         val value = expression.value
         val type = expression.asmType
-        StackValue.constant(value, type).put(type, mv)
+        if (expression.kind is IrConstKind.Type && AsmUtil.isPrimitive(expression.value as Type)) {
+            mv.visitFieldInsn(Opcodes.GETSTATIC, boxType(expression.value as Type).internalName, "TYPE", Type.getDescriptor(Class::class.java))
+        }
+        else {
+            StackValue.constant(value, type).put(type, mv)
+        }
         return expression.onStack
     }
 
