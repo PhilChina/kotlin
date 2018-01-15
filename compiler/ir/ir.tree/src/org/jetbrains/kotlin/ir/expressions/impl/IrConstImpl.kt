@@ -21,6 +21,7 @@ import org.jetbrains.kotlin.ir.expressions.IrConstKind
 import org.jetbrains.kotlin.ir.expressions.IrExpression
 import org.jetbrains.kotlin.ir.visitors.IrElementVisitor
 import org.jetbrains.kotlin.types.KotlinType
+import org.jetbrains.org.objectweb.asm.Type
 
 class IrConstImpl<T>(
     startOffset: Int,
@@ -71,5 +72,8 @@ class IrConstImpl<T>(
 
         fun short(startOffset: Int, endOffset: Int, type: KotlinType, value: Short): IrExpression =
             IrConstImpl(startOffset, endOffset, type, IrConstKind.Short, value)
+
+        fun type(startOffset: Int, endOffset: Int, type: KotlinType, value: Type): IrExpression =
+                IrConstImpl(startOffset, endOffset, type, IrConstKind.Type, value)
     }
 }

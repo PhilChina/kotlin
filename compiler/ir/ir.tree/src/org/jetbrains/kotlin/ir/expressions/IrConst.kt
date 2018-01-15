@@ -39,6 +39,8 @@ sealed class IrConstKind<T>(val asString: kotlin.String) {
     object Float : IrConstKind<kotlin.Float>("Float")
     object Double : IrConstKind<kotlin.Double>("Double")
 
+    object Type : IrConstKind<org.jetbrains.org.objectweb.asm.Type>("Type")
+
     override fun toString() = asString
 }
 

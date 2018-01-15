@@ -68,6 +68,7 @@ class CheckIrElementVisitor(val builtIns: KotlinBuiltIns, val reportError: Repor
             IrConstKind.String -> builtIns.stringType
             IrConstKind.Float -> builtIns.floatType
             IrConstKind.Double -> builtIns.doubleType
+            IrConstKind.Type -> return
         }
 
         expression.ensureTypeIs(naturalType)
