@@ -5,15 +5,15 @@ interface Callback {
 open class Base(val callback: Callback)
 
 class Outer {
-    val ok = "OK"
-
-    inner class Inner1 {
-        inner class Inner2 : Base(
-                object : Callback {
-                    override fun invoke() = ok
-                }
-        )
-    }
+//    val ok = "OK"
+//
+//    inner class Inner1 {
+//        inner class Inner2 : Base(
+//                object : Callback {
+//                    override fun invoke() = ok
+//                }
+//        )
+//    }
 }
 
 fun box(): String =
