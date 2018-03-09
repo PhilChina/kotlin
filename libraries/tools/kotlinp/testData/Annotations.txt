@@ -1,0 +1,108 @@
+// A.class
+// ------------------------------------------
+public final annotation class A : kotlin/Annotation {
+
+  // <init>(ZCBSIFJD[Z[C[B[S[I[F[J[DLjava/lang/String;Lkotlin/annotation/AnnotationTarget;Lkotlin/reflect/KClass;LB;)V
+  public /* primary */ constructor(z: kotlin/Boolean, c: kotlin/Char, b: kotlin/Byte, s: kotlin/Short, i: kotlin/Int, f: kotlin/Float, j: kotlin/Long, d: kotlin/Double, za: kotlin/BooleanArray, ca: kotlin/CharArray, ba: kotlin/ByteArray, sa: kotlin/ShortArray, ia: kotlin/IntArray, fa: kotlin/FloatArray, ja: kotlin/LongArray, da: kotlin/DoubleArray, str: kotlin/String, enum: kotlin/annotation/AnnotationTarget, klass: kotlin/reflect/KClass<*>, anno: B)
+
+  // anno:LB;
+  public final val anno: B
+    public final get
+
+  // b:B
+  public final val b: kotlin/Byte
+    public final get
+
+  // ba:[B
+  public final val ba: kotlin/ByteArray
+    public final get
+
+  // c:C
+  public final val c: kotlin/Char
+    public final get
+
+  // ca:[C
+  public final val ca: kotlin/CharArray
+    public final get
+
+  // d:D
+  public final val d: kotlin/Double
+    public final get
+
+  // da:[D
+  public final val da: kotlin/DoubleArray
+    public final get
+
+  // enum:Lkotlin/annotation/AnnotationTarget;
+  public final val enum: kotlin/annotation/AnnotationTarget
+    public final get
+
+  // f:F
+  public final val f: kotlin/Float
+    public final get
+
+  // fa:[F
+  public final val fa: kotlin/FloatArray
+    public final get
+
+  // i:I
+  public final val i: kotlin/Int
+    public final get
+
+  // ia:[I
+  public final val ia: kotlin/IntArray
+    public final get
+
+  // j:J
+  public final val j: kotlin/Long
+    public final get
+
+  // ja:[J
+  public final val ja: kotlin/LongArray
+    public final get
+
+  // klass:Lkotlin/reflect/KClass;
+  public final val klass: kotlin/reflect/KClass<*>
+    public final get
+
+  // s:S
+  public final val s: kotlin/Short
+    public final get
+
+  // sa:[S
+  public final val sa: kotlin/ShortArray
+    public final get
+
+  // str:Ljava/lang/String;
+  public final val str: kotlin/String
+    public final get
+
+  // z:Z
+  public final val z: kotlin/Boolean
+    public final get
+
+  // za:[Z
+  public final val za: kotlin/BooleanArray
+    public final get
+}
+// B.class
+// ------------------------------------------
+public final annotation class B : kotlin/Annotation {
+
+  // <init>(Ljava/lang/String;)V
+  public /* primary */ constructor(value: kotlin/String)
+
+  // value:Ljava/lang/String;
+  public final val value: kotlin/String
+    public final get
+}
+// C.class
+// ------------------------------------------
+public final class C : kotlin/Any {
+
+  // <init>()V
+  public /* primary */ constructor()
+
+  // typeAnnotation()V
+  public final fun typeAnnotation(): @A(z = true, c = 'x', b = 1.toByte(), s = 42.toShort(), i = 42424242, f = -2.72f, j = 239239239239239L, d = 3.14, za = [true], ca = ['x'], ba = [1.toByte()], sa = [42.toShort()], ia = [42424242], fa = [-2.72f], ja = [239239239239239L], da = [3.14], str = "aba", enum = kotlin/annotation/AnnotationTarget.CLASS, klass = C::class, anno = B(value = "caba")) kotlin/Unit
+}
