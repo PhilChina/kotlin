@@ -6,7 +6,7 @@
   <version>@snapshot@</version>
   <vendor url="http://www.jetbrains.com">JetBrains</vendor>
 
-  <idea-version since-build="173.1" until-build="173.*"/>
+  <idea-version since-build="181.1" until-build="181.*"/>
 
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.remoteServers</depends>
@@ -82,9 +82,9 @@
 
     <group id = "ConvertJavaToKotlinGroup">
       <separator/>
-      <action id="ConvertJavaToKotlin" class="org.jetbrains.kotlin.idea.actions.JavaToKotlinAction"
-              text="Convert Java File to Kotlin File">
-        <keyboard-shortcut keymap="$default" first-keystroke="control alt shift K"/>
+    <action id="ConvertJavaToKotlin" class="org.jetbrains.kotlin.idea.actions.JavaToKotlinAction"
+            text="Convert Java File to Kotlin File">
+      <keyboard-shortcut keymap="$default" first-keystroke="control alt shift K"/>
       </action>
       <add-to-group group-id="CodeMenu" anchor="last"/>
       <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
