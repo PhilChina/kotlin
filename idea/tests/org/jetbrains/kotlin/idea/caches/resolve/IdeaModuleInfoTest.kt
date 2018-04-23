@@ -25,8 +25,8 @@ import com.intellij.openapi.roots.ModuleRootModificationUtil
 import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.roots.libraries.Library
 import com.intellij.openapi.vfs.LocalFileSystem
+import com.intellij.openapi.vfs.VfsUtil
 import com.intellij.openapi.vfs.VirtualFile
-import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess
 import com.intellij.testFramework.ModuleTestCase
 import com.intellij.testFramework.PlatformTestCase
 import com.intellij.testFramework.PsiTestUtil
@@ -340,11 +340,6 @@ class IdeaModuleInfoTest : ModuleTestCase() {
         }
     }
 
-    override fun setUp() {
-        super.setUp()
-        VfsRootAccess.allowRootAccess("C:/Work/Projects/kotlin/")
-    }
-
     fun testScriptDependenciesForProject() {
         val a = module("a")
 
@@ -417,7 +412,10 @@ class IdeaModuleInfoTest : ModuleTestCase() {
 
     private fun createFileInProject(fileName: String): VirtualFile {
         return runWriteAction {
-            PlatformTestCase.getVirtualFile(createTempFile(fileName, "")).copy(this, project.baseDir, fileName)
+            val tempFile = createTempFile(fileName, "")
+            val copy = PlatformTestCase.getVirtualFile(tempFile).copy(this, project.baseDir, fileName)
+            PlatformTestCase.myFilesToDelete.add(VfsUtil.virtualToIoFile(copy))
+            copy
         }
     }
 
