@@ -43,13 +43,17 @@ abstract class BasicIrBoxTest(
         testPackage: String?,
         testFunction: String
     ) {
-        val code = compile(
-            config.project,
+        val filesToCompile =
             units.map { (it as TranslationUnit.SourceFile).file }
                 // TODO: temporary ignore _commonFiles/asserts.kt since it depends on stdlib but we don't have any library support in JS IR BE yet
                 // and probably it will be better to avoid using stdlib in testData as much as possible.
                 .filter { !it.virtualFilePath.endsWith("js/js.translator/testData/_commonFiles/arrayAsserts.kt") }
-                .filter { !it.virtualFilePath.endsWith("js/js.translator/testData/_commonFiles/fail.kt") },
+                .filter { !it.virtualFilePath.endsWith("js/js.translator/testData/_commonFiles/fail.kt") } +
+                    listOf(createPsiFile("libraries/stdlib/js/src/kotlin/core.kt"))
+
+        val code = compile(
+            config.project,
+            filesToCompile,
             config.configuration,
             FqName((testPackage?.let { it + "." } ?: "") + testFunction))
 
