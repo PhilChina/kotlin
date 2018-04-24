@@ -3,7 +3,7 @@
  * that can be found in the license/LICENSE.txt file.
  */
 
-package kotlin.js.collections
+package kotlin.collections
 
 @kotlin.internal.InlineOnly
 @Suppress("UNUSED_PARAMETER")
